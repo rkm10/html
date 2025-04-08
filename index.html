@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Activity Feed</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <style>
+        @brand-primary: #315782;
+
+        @quick-add-bg: #fff;
+        @active-color: #fff;
+        @tab-active-bg: @brand-primary;
+        @tab-hover-bg: #e5e5e5;
+        @tab-bg: #f4f4f4;
+        @tab-color: #233444;
+
+
+        .widget {
+            background-color: #fff;
+            padding: 30px;
+        }
+
+        .activity {
+            position: relative;
+
+            h1,
+            h2,
+            h3,
+            h4 {
+                font-family: "Titillium web", Arial;
+            }
+
+            .activity-items {
+                position: relative;
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: 0px;
+                    bottom: 0px;
+                    left: 150px;
+                    width: 0px;
+                    border-left: 3px dashed #ddd;
+                }
+            }
+
+            .activity-item-wrap {
+                padding: 7px 0px 7px 175px;
+                position: relative;
+
+                h4.activity-date {
+                    font-size: 18px;
+                    margin: 10px 0 0 0;
+                    color: #aaa;
+                }
+
+                /* .activity-item-badge {
+                    width: 30px;
+                    height: 30px;
+                    background: @brand-primary;
+                    color: #fff;
+                    border-radius: 50%;
+                    position: absolute;
+                    top: 17px;
+                    left: 19px;
+                    text-align: center;
+                    border: 3px solid #fff;
+                    box-shadow: 0px 2px 3px #ccc; */
+
+                    i {
+                        line-height: 30px;
+                    }
+                }
+
+                .activity-item {
+                    border-radius: 3px;
+                    position: relative;
+                    border: 1px solid #cbd6e2;
+                    background: #f5f8fa;
+                    padding: 10px 20px 10px 60px;
+
+                    &:hover {
+                        box-shadow: 0 0 12px #cbd6e2;
+                        -webkit-transition: all .2s ease-in;
+                        -o-transition: all .2s ease-in;
+                        transition: all .2s ease-in;
+                    }
+
+                    p {
+                        margin: 0px;
+                    }
+
+                    .activity-item-meta {
+                        margin-bottom: 10px;
+
+                        .activity-user {
+                            background: #d4edda;
+                            height: 40px;
+                            width: 40px;
+                            border-radius: 50%;
+                            position: absolute;
+                            left: -44px;
+                            margin-right: 10px;
+                            color: #155724;
+                            text-align: center;
+                            line-height: 40px;
+                            font-size: 13px;
+
+                            img {
+                                margin-top: -3px;
+                            }
+
+                            &.activity-ismember {
+                                background: #cce5ff;
+                                color: #004085;
+                            }
+
+                            &.activity-isaro {
+                                background: #fff;
+                                color: red;
+                                border: 1px solid #ddd;
+                            }
+                        }
+
+                        .activity-summary {
+                            font-size: 13px;
+                        }
+
+                        .activity-timestamp {
+                            position: relative;
+                            font-size: 11px;
+                            color: #aaa;
+                            left: -200px;
+                        }
+                    }
+
+                    .activity-item-details {}
+                }
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="widget">
+        <div class="widget-content">
+            <div class="column-wrap">
+                <div class="coloumn">
+                    <div class="activity">
+                        <div class="btn btn-default pull-right" style="margin-top:5px;">
+                            <i class="aroicon-action-filter"></i>
+                            <span>Filter Acitivty</span>
+                        </div>
+                        <h3>Activity</h3>
+                        <div class="activity-items">
+
+                            <div class="activity-item-wrap activity-date">
+                                <h4 class="activity-date">January, 2018</h4>
+                            </div>
+                            <!-- start activity -->
+                            <div class="activity-item-wrap activity-call">
+                                <div class="activity-item-badge"><i class="aroicon-action-send-message"></i></div>
+                                <div class="activity-item">
+                                    <div class="activity-item-meta">
+                                        <div class="activity-user"><i class="aroicon-entity-contacts"></i></div>
+                                        <p class="activity-summary"><strong>John Smith</strong> opened the newsletter
+                                            campaign <a href="/linkToTheCampaign">Weekly Market Update</a> 8 times</p>
+                                        <p class="activity-timestamp">Jan 7 at 11:35am</p>
+                                    </div>
+                                    <div class="activity-item-details">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end activity -->
+                            <!-- start activity -->
+                            <div class="activity-item-wrap activity-call">
+                                <div class="activity-item-badge"><i class="aroicon-field-phone"></i></div>
+                                <div class="activity-item">
+                                    <div class="activity-item-meta">
+                                        <div class="activity-user activity-ismember"><img class="img-circle"
+                                                src="https://thm.arosoftware.com/aro-au-dev-storage.s3-ap-southeast-2.amazonaws.com/staging_lite/contacts/2/images/img00672_w_360_aoe_1_4619.w.40.h.40.q.75.zc.T.jpg">
+                                        </div>
+                                        <p class="activity-summary"><strong>You</strong> Logged a <a
+                                                href="/linktothecommunication">call</a></p>
+                                        <p class="activity-timestamp">Jan 6 at 9:30am</p>
+                                    </div>
+                                    <div class="activity-item-details">
+                                        <p><strong>Call Direction:</strong> Incoming</p>
+                                        <p>Follow up call, just had a chat about listing his house, not interested for
+                                            atleast a year</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end activity -->
+                            <!-- start activity -->
+                            <div class="activity-item-wrap activity-call">
+                                <div class="activity-item-badge"><i class="aroicon-entity-note"></i></div>
+                                <div class="activity-item">
+                                    <div class="activity-item-meta">
+                                        <div class="activity-user activity-ismember"><img class="img-circle"
+                                                src="https://thm.arosoftware.com/aro-au-dev-storage.s3-ap-southeast-2.amazonaws.com/staging_lite/contacts/2/images/img00672_w_360_aoe_1_4619.w.40.h.40.q.75.zc.T.jpg">
+                                        </div>
+                                        <p class="activity-summary"><strong>You</strong> Added a <a
+                                                href="/linktothenote">note</a></p>
+                                        <p class="activity-timestamp">Jan 6 at 9am</p>
+                                    </div>
+                                    <div class="activity-item-details">
+                                        <p><strong>The title of the Note</strong></p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut massa in
+                                            dolor ornare porta. Donec fermentum metus risus, in tincidunt justo finibus
+                                            sit amet. Pellentesque molestie lacus nisi, in suscipit mi molestie id.
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut massa in
+                                            dolor ornare porta. Donec fermentum metus risus, in tincidunt justo finibus
+                                            sit amet. Pellentesque molestie lacus nisi, in suscipit mi molestie id.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end activity -->
+                            <div class="activity-item-wrap activity-date">
+                                <h4 class="activity-date">November, 2017</h4>
+                            </div>
+                            <!-- start activity -->
+                            <div class="activity-item-wrap activity-call">
+                                <div class="activity-item-badge"><i class="aroicon-action-send-message"></i></div>
+                                <div class="activity-item">
+                                    <div class="activity-item-meta">
+                                        <div class="activity-user"><i class="aroicon-entity-contacts"></i></div>
+                                        <p class="activity-summary"><strong>John Smith</strong> Clicked on <a
+                                                href="/linkToTheCampaign">10 Smith Ave, Coolum Beach</a> in the
+                                            newsletter Campaign <a href="/linkToTheCampaign">Weekly Market Update</a>
+                                        </p>
+                                        <p class="activity-timestamp">Nov 10 at 5:45pm</p>
+                                    </div>
+                                    <div class="activity-item-details">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end activity -->
+                            <!-- start activity -->
+                            <div class="activity-item-wrap activity-call">
+                                <div class="activity-item-badge"><i class="aroicon-action-send-message"></i></div>
+                                <div class="activity-item">
+                                    <div class="activity-item-meta">
+                                        <div class="activity-user"><i class="aroicon-entity-contacts"></i></div>
+                                        <p class="activity-summary"><strong>John Smith</strong> opened the newsletter
+                                            campaign <a href="/linkToTheCampaign">Weekly Market Update</a></p>
+                                        <p class="activity-timestamp">Nov 10 at 4:01pm</p>
+                                    </div>
+                                    <div class="activity-item-details">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end activity -->
+                            <!-- start activity -->
+                            <div class="activity-item-wrap activity-call">
+                                <div class="activity-item-badge"><i class="aroicon-action-send-message"></i></div>
+                                <div class="activity-item">
+                                    <div class="activity-item-meta">
+                                        <div class="activity-user activity-ismember">P</div>
+                                        <p class="activity-summary"><strong>Pam Bidwell</strong> Sent the newsletter
+                                            campaign <a href="/linkToTheLead">Weekly Market Update</a></p>
+                                        <p class="activity-timestamp">Nov 10 at 2:55pm</p>
+                                    </div>
+                                    <div class="activity-item-details">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end activity -->
+                            <div class="activity-item-wrap activity-date">
+                                <h4 class="activity-date">April, 2017</h4>
+                            </div>
+                            <!-- start activity -->
+                            <div class="activity-item-wrap activity-call">
+                                <div class="activity-item-badge"><i class="aroicon-action-sms"></i></div>
+                                <div class="activity-item">
+                                    <div class="activity-item-meta">
+                                        <div class="activity-user activity-ismember"><img class="img-circle"
+                                                src="https://thm.arosoftware.com/aro-au-dev-storage.s3-ap-southeast-2.amazonaws.com/staging_lite/contacts/2/images/img00672_w_360_aoe_1_4619.w.40.h.40.q.75.zc.T.jpg">
+                                        </div>
+                                        <p class="activity-summary"><strong>You</strong> Sent an <a
+                                                href="/linktothecommunication">SMS</a></p>
+                                        <p class="activity-timestamp">Apr 6 at 9:32am</p>
+                                    </div>
+                                    <div class="activity-item-details">
+                                        <p>Hey John, I just sent your contract, let me know if any questions.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end activity -->
+                            <!-- start activity -->
+                            <div class="activity-item-wrap activity-call">
+                                <div class="activity-item-badge"><i class="aroicon-field-email"></i></div>
+                                <div class="activity-item">
+                                    <div class="activity-item-meta">
+                                        <div class="activity-user activity-ismember"><img class="img-circle"
+                                                src="https://thm.arosoftware.com/aro-au-dev-storage.s3-ap-southeast-2.amazonaws.com/staging_lite/contacts/2/images/img00672_w_360_aoe_1_4619.w.40.h.40.q.75.zc.T.jpg">
+                                        </div>
+                                        <p class="activity-summary"><strong>You</strong> Sent an <a
+                                                href="/linktothecommunication">email</a></p>
+                                        <p class="activity-timestamp">Apr 6 at 9:30am</p>
+                                    </div>
+                                    <div class="activity-item-details">
+                                        <p><strong>Subject:</strong> Your contract</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end activity -->
+                            <!-- start activity -->
+                            <div class="activity-item-wrap activity-call">
+                                <div class="activity-item-badge"><i class="aroicon-field-email"></i></div>
+                                <div class="activity-item">
+                                    <div class="activity-item-meta">
+                                        <div class="activity-user activity-isaro"><i class="aroicon-aro-icon"></i></div>
+                                        <p class="activity-summary"><strong>Arosoftware System</strong> Sent an <a
+                                                href="/linktothecommunication">email</a></p>
+                                        <p class="activity-timestamp">Apr 2 at 9:30am</p>
+                                    </div>
+                                    <div class="activity-item-details">
+                                        <p><strong>Subject:</strong> Some properties you might be interested in</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end activity -->
+                            <div class="activity-item-wrap activity-date">
+                                <h4 class="activity-date">March, 2017</h4>
+                            </div>
+                            <!-- start activity -->
+                            <div class="activity-item-wrap activity-call">
+                                <div class="activity-item-badge"><i class="aroicon-entity-listings"></i></div>
+                                <div class="activity-item">
+                                    <div class="activity-item-meta">
+                                        <div class="activity-user"><i class="aroicon-entity-contacts"></i></div>
+                                        <p class="activity-summary"><strong>John Smith</strong> inspected <a
+                                                href="/linkToTheListing">10 Smith Ave, Coolum Beach</a></p>
+                                        <p class="activity-timestamp">Mar 24 at 10am</p>
+                                    </div>
+                                    <div class="activity-item-details">
+                                        <p>Loved the house, making an offer tomorrow</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end activity -->
+                            <!-- start activity -->
+                            <div class="activity-item-wrap activity-call">
+                                <div class="activity-item-badge"><i class="aroicon-entity-groups"></i></div>
+                                <div class="activity-item">
+                                    <div class="activity-item-meta">
+                                        <div class="activity-user activity-ismember">P</div>
+                                        <p class="activity-summary"><strong>Pam Bidwell</strong> Added a <a
+                                                href="/linkToTheLead">Lead</a></p>
+                                        <p class="activity-timestamp">Mar 21 at 2:55pm</p>
+                                    </div>
+                                    <div class="activity-item-details">
+                                        <p><strong>Source:</strong> realestate.com.au</p>
+                                        <p><strong>Assignee:</strong> <a href="/linkToTheMember">John Doe</a></p>
+                                        <p><strong>Listing:</strong> <a href="/linkToTheListing">10 Smith Ave, Coolum
+                                                Beach</a></p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut massa in
+                                            dolor ornare porta. Donec fermentum metus risus.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end activity -->
+                            <div class="activity-item-wrap activity-date">
+                                <p><a href="">Load more activity...</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

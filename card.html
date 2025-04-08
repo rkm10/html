@@ -1,0 +1,325 @@
+<style>
+    body {
+        height: 300vh;
+    }
+
+    .cards-container {
+        position: absolute !important;
+        top: -160px;
+    }
+
+    .cards {
+        width: 200px;
+        height: 200px;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 1.3s ease;
+        position: absolute;
+        padding: 30px;
+    }
+
+    .cards:nth-child(1) {
+        z-index: 4;
+        top: 0px;
+        left: 0px;
+    }
+
+    .cards:nth-child(2) {
+        z-index: 3;
+        left: 15px;
+        /* Adjust as needed */
+        transform-origin: left;
+        background-color: #38B1B7;
+        border: 1px solid #38B1B7;
+        transform: rotate(3deg);
+        transition: transform 1.5s ease-in-out;
+    }
+
+    .cards:nth-child(3) {
+        z-index: 2;
+        left: 27px;
+        /* Adjust as needed */
+        transform-origin: left;
+        transform: rotate(6deg);
+        background-color: #309CA0;
+        border: 1px solid #309CA0;
+        transition: transform 1.5s ease-in-out;
+    }
+
+    .cards:nth-child(4) {
+        z-index: 1;
+        left: 39px;
+        /* Adjust as needed */
+        transform-origin: left;
+        transform: rotate(8deg);
+        background-color: #217273;
+        border: 1px solid #217273;
+        transition: transform 2.0s ease-in-out;
+    }
+
+
+    @media only screen and (max-width: 379px) and (min-width: 0px) {
+        .cards:nth-child(1) {
+            top: 170px;
+            left: 10%;
+        }
+
+        .cards:nth-child(2) {
+            top: 170px;
+            left: 13%;
+        }
+
+        .cards:nth-child(3) {
+            top: 170px;
+            left: 16%;
+        }
+
+        .cards:nth-child(4) {
+            top: 170px;
+            left: 19%;
+        }
+    }
+
+    @media only screen and (max-width: 449px) and (min-width: 380px) {
+        .cards:nth-child(1) {
+            top: 170px;
+            left: 55px;
+        }
+
+        .cards:nth-child(2) {
+            top: 170px;
+            left: 63px;
+        }
+
+        .cards:nth-child(3) {
+            top: 170px;
+            left: 71px;
+        }
+
+        .cards:nth-child(4) {
+            top: 170px;
+            left: 79px;
+        }
+    }
+
+    @media only screen and (max-width: 540px) and (min-width: 450px) {
+
+        /* Styles for screen sizes between 450px and 600px */
+        .cards {
+            width: 250px;
+            height: 250px;
+        }
+
+        .cards:nth-child(1) {
+            top: 150px;
+            left: 100px;
+        }
+
+        .cards:nth-child(2) {
+            top: 150px;
+            left: 108px;
+        }
+
+        .cards:nth-child(3) {
+            top: 150px;
+            left: 116px;
+        }
+
+        .cards:nth-child(4) {
+            top: 150px;
+            left: 124px;
+        }
+    }
+
+    @media only screen and (max-width: 600px) and (min-width: 541px) {
+        .cards {
+            width: 250px;
+            height: 250px;
+        }
+
+        .cards:nth-child(1) {
+            top: 145px;
+            left: 150px;
+        }
+
+        .cards:nth-child(2) {
+            left: 158px;
+            top: 145px;
+        }
+
+        .cards:nth-child(3) {
+            left: 166px;
+            top: 145px;
+        }
+
+        .cards:nth-child(4) {
+            left: 172px;
+            top: 145px;
+        }
+    }
+
+
+
+    @media only screen and (max-width: 767px) and (min-width: 600px) {
+        .cards {
+            width: 270px;
+            height: 270px;
+        }
+
+        .cards:nth-child(1) {
+            top: 136px;
+            left: 160px;
+        }
+
+        .cards:nth-child(2) {
+            left: 170px;
+            top: 136px;
+        }
+
+        .cards:nth-child(3) {
+            left: 178px;
+            top: 136px;
+        }
+
+        .cards:nth-child(4) {
+            left: 186px;
+            top: 136px;
+        }
+
+    }
+
+    @media only screen and (max-width: 999px) and (min-width: 768px) {
+        .cards {
+            width: 300px;
+            height: 300px;
+        }
+
+        .cards:nth-child(1) {
+            top: 30px;
+            left: 0px;
+        }
+
+        .cards:nth-child(2) {
+            left: 15px;
+            top: 30px;
+        }
+
+        .cards:nth-child(3) {
+            left: 27px;
+            top: 30px;
+        }
+
+        .cards:nth-child(4) {
+            left: 39px;
+            top: 30px;
+        }
+    }
+
+    @media (min-width: 1000px) {
+        .cards {
+            width: 450px;
+            height: 400px;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .cards {
+            width: 500px;
+            height: 450px;
+        }
+    }
+
+    .cards_img {
+        width: 50%;
+    }
+
+    .head-cards {
+        font-family: "Montserrat";
+        font-weight: 600;
+        font-size: 24px;
+    }
+
+    .para-cards {
+        font-family: "Montserrat";
+        font-weight: 400;
+        font-size: 16px;
+    }
+</style>
+
+
+<div class="cards-container">
+    <div class="cards" id="cards1">
+
+    </div>
+    <div class="cards" id="cards2">
+        <div class="cards_div">
+            <img src="" alt="image1" class="cards_img">
+            <div class="head-cards">Equality</div>
+            <p class="para-cards">Ensuring fairness and equal opportunities for all.</p>
+        </div>
+    </div>
+    <div class="cards" id="cards3">
+        <div class="cards_div">
+            <img src="" alt="image2" class="cards_img">
+            <div class="head-cards">Respect</div>
+            <p class="para-cards">Valuing diverse perspectives and treating everyone with dignity.</p>
+        </div>
+    </div>
+    <div class="cards" id="cards4">
+        <div class="cards_div">
+            <img src="" alt="image3" class="cards_img">
+            <div class="head-cards">Collaboration</div>
+            <p class="para-cards">Embracing teamwork and leveraging diverse strengths for collective success.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        let lastScrollTop = 0;
+
+        window.addEventListener('scroll', function () {
+            var st = window.pageYOffset || document.documentElement.scrollTop;
+            var direction = st > lastScrollTop ? 'down' : 'up';
+            lastScrollTop = st <= 0 ? 0 : st;
+
+            var cards2 = document.querySelector('#cards2');
+            var cards3 = document.querySelector('#cards3');
+            var cards4 = document.querySelector('#cards4');
+            if (window.innerWidth >= 1200 && window.innerWidth <= 1400) {
+                applyTransform(cards2, -85, 125, 360, 0.7, direction);
+                applyTransform(cards3, -5, 125, 360, 0.7, direction);
+                applyTransform(cards4, 76, 125, 360, 0.7, direction);
+            }
+            if (window.innerWidth >= 1124 && window.innerWidth <= 1199) {
+                applyTransform(cards2, -80, 125, 360, 0.7, direction);
+                applyTransform(cards3, -10, 125, 360, 0.7, direction);
+                applyTransform(cards4, 62, 125, 360, 0.7, direction);
+            }
+            if (window.innerWidth >= 1000 && window.innerWidth <= 1124) {
+                applyTransform(cards2, -80, 149, 360, 0.7, direction);
+                applyTransform(cards3, -10, 149, 360, 0.7, direction);
+                applyTransform(cards4, 62, 149, 360, 0.7, direction);
+            }
+            if (window.innerWidth >= 767 && window.innerWidth <= 800) {
+                applyTransform(cards2, -89, 220, 360, 0.8, direction);
+                applyTransform(cards3, -9, 220, 360, 0.8, direction);
+                applyTransform(cards4, 71, 220, 360, 0.8, direction);
+            }
+        });
+
+        function applyTransform(cards, translateX, translateY, rotate, scale, direction) {
+            var rect = cards.getBoundingClientRect();
+            var isInViewport = rect.top <= window.innerHeight && rect.bottom >= 0;
+
+            if (isInViewport && direction === 'down') {
+                cards.style.transform = `translateX(${translateX}%) translateY(${translateY}%) rotate(${rotate}deg) scale(${scale})`;
+                var content = cards.querySelector('.cards_div');
+                content.style.transform = `rotate(${-rotate}deg)`;
+            }
+        }
+    });
+
+</script>

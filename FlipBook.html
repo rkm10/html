@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Flipbook with Left and Right Content</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            touch-action: none;
+        }
+
+        .flipbook-container {
+            width: 800px;
+            height: 600px;
+            position: relative;
+            perspective: 3000px;
+            max-width: 800px;
+            max-height: 600px;
+            min-width: 800px;
+            min-height: 600px;
+        }
+
+        .flipbook {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            position: relative;
+            translate: 50%;
+        }
+
+        .page {
+            position: absolute;
+            width: 400px;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: white;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            transform-origin: left center;
+            transform-style: preserve-3d;
+            transition: transform 1s ease;
+        }
+
+        .page .front,
+        .page .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            overflow: hidden;
+        }
+
+        .page .back {
+            transform: rotateY(180deg);
+            background: #f9f9f9;
+        }
+
+        .page-content {
+            padding: 20px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .flipped {
+            transform: rotateY(-180deg);
+        }
+
+        .content-div {
+            width: 100%;
+            height: 100%;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s;
+        }
+
+        .content-div:hover {
+            transform: scale(1.02);
+        }
+
+        .content-div img {
+            width: 100%;
+            height: 80%;
+            object-fit: cover;
+        }
+
+        .content-div h3 {
+            margin-top: 10px;
+            color: #333;
+        }
+
+        .navigation {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            z-index: 100;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #555;
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .cover-title {
+            font-size: 36px;
+            color: #333;
+            text-align: center;
+            margin-top: 40%;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #666;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* Assign z-index to each page */
+        .page0 {
+            z-index: 5;
+        }
+
+        .page1 {
+            z-index: 4;
+        }
+
+        .page2 {
+            z-index: 3;
+        }
+
+        .page3 {
+            z-index: 2;
+        }
+
+        .page4 {
+            z-index: 1;
+        }
+
+
+        /* Fallback zoom control using transform scale */
+        #zoom-protection {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            z-index: 1000;
+        }
+
+        #zoom-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform-origin: center center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="zoom-protection">
+        <div id="zoom-content">
+            <div class="flipbook-container">
+                <div class="flipbook" id="flipbook">
+                    <!-- Cover (Page 0) -->
+                    <div class="page page0" id="page0">
+                        <div class="front page-content"
+                            style="background: linear-gradient(135deg, #6e8efb, #a777e3); color: white;">
+                            <h1 class="cover-title">My Flipbook</h1>
+                            <p class="cover-subtitle">A collection of memories</p>
+                            <div class="page-number">Cover</div>
+                        </div>
+                        <div class="back page-content">
+                            <div class="content-div">
+                                <img src="/api/placeholder/400/320" alt="Image 1">
+                                <h3>Page 1</h3>
+                            </div>
+                            <div class="page-number">1</div>
+                        </div>
+                    </div>
+
+                    <!-- Page 1 -->
+                    <div class="page page1" id="page1">
+                        <div class="front page-content">
+                            <div class="content-div">
+                                <img src="/api/placeholder/400/320" alt="Image 2">
+                                <h3>Page 2</h3>
+                            </div>
+                            <div class="page-number">2</div>
+                        </div>
+                        <div class="back page-content">
+                            <div class="content-div">
+                                <img src="/api/placeholder/400/320" alt="Image 3">
+                                <h3>Page 3</h3>
+                            </div>
+                            <div class="page-number">3</div>
+                        </div>
+                    </div>
+
+                    <!-- Page 2 -->
+                    <div class="page page2" id="page2">
+                        <div class="front page-content">
+                            <div class="content-div">
+                                <img src="/api/placeholder/400/320" alt="Image 4">
+                                <h3>Page 4</h3>
+                            </div>
+                            <div class="page-number">4</div>
+                        </div>
+                        <div class="back page-content">
+                            <div class="content-div">
+                                <img src="/api/placeholder/400/320" alt="Image 5">
+                                <h3>Page 5</h3>
+                            </div>
+                            <div class="page-number">5</div>
+                        </div>
+                    </div>
+
+                    <!-- Page 3 -->
+                    <div class="page page3" id="page3">
+                        <div class="front page-content">
+                            <div class="content-div">
+                                <img src="/api/placeholder/400/320" alt="Image 6">
+                                <h3>Page 6</h3>
+                            </div>
+                            <div class="page-number">6</div>
+                        </div>
+                        <div class="back page-content">
+                            <div class="content-div">
+                                <img src="/api/placeholder/400/320" alt="Image 7">
+                                <h3>Page 7</h3>
+                            </div>
+                            <div class="page-number">7</div>
+                        </div>
+                    </div>
+
+                    <!-- Page 4 (Back Cover) -->
+                    <div class="page page4" id="page4">
+                        <div class="front page-content">
+                            <div class="content-div">
+                                <img src="/api/placeholder/400/320" alt="Image 8">
+                                <h3>Page 8</h3>
+                            </div>
+                            <div class="page-number">8</div>
+                        </div>
+                        <div class="back page-content"
+                            style="background: linear-gradient(135deg, #a777e3, #6e8efb); color: white;">
+                            <h1 class="cover-title">The End</h1>
+                            <p class="cover-subtitle">Thanks for viewing</p>
+                            <div class="page-number">Back Cover</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navigation">
+                    <button class="btn" id="prev">Previous</button>
+                    <button class="btn" id="next">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let currentPage = 0;
+            const pages = [
+                document.getElementById('page0'),
+                document.getElementById('page1'),
+                document.getElementById('page2'),
+                document.getElementById('page3'),
+                document.getElementById('page4')
+            ];
+
+            function updateNavButtons() {
+                document.getElementById('prev').disabled = currentPage === 0;
+                document.getElementById('next').disabled = currentPage === pages.length;
+            }
+
+            document.getElementById('next').addEventListener('click', () => {
+                if (currentPage < pages.length) {
+                    pages[currentPage].classList.add('flipped');
+                    pages[currentPage].style.zIndex = 0;
+                    currentPage++;
+                    updateNavButtons();
+                }
+            });
+
+            document.getElementById('prev').addEventListener('click', () => {
+                if (currentPage > 0) {
+                    currentPage--;
+                    pages[currentPage].classList.remove('flipped');
+                    pages[currentPage].style.zIndex = pages.length - currentPage;
+                    updateNavButtons();
+                }
+            });
+
+
+            // Prevent zooming
+            document.addEventListener('keydown', function (e) {
+                if ((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '-' || e.key === '0')) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+
+            document.addEventListener('touchmove', function (e) {
+                if (e.touches.length > 1) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
+
+            function counterZoom() {
+                const scale = 1 / (window.devicePixelRatio || 1);
+                document.getElementById('zoom-content').style.transform = `scale(${scale})`;
+            }
+
+            window.addEventListener('resize', counterZoom);
+            setInterval(counterZoom, 100);
+            counterZoom();
+        });
+
+    </script>
+</body>
+
+</html>

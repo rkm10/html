@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scrolling Card</title>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  height: 200vh; /* To enable scrolling */
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: black;
+}
+
+.card {
+  position: absolute;
+  top: 30%;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  text-align: center;
+  /* line-height: 100px; */
+  transition: transform 1.5s ease-in-out;
+}
+.content{
+    color: #f0f0f0;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="card">Scroll Me</div>
+  <div class="content">this is sample card</div>
+</div>
+<script> 
+document.addEventListener('DOMContentLoaded', function () {
+    window.addEventListener('scroll', function () {
+        var card2 = document.querySelector('#card2');
+        var card3 = document.querySelector('#card3');
+        var card4 = document.querySelector('#card4');
+
+        applyTransform(card2, -85, 125, 90, 0.7);
+        applyTransform(card3, -5, 125, 90, 0.7);
+        applyTransform(card4, 76, 125, 90, 0.7);
+    });
+
+    function applyTransform(card, translateX, translateY, rotate, scale) {
+        var rect = card.getBoundingClientRect();
+        var isInViewport = rect.top <= window.innerHeight && rect.bottom >= 0;
+
+        if (isInViewport) {
+            card.style.transform = `translateX(${translateX}%) translateY(${translateY}%) rotate(${rotate}deg) scale(${scale})`;
+        } else {
+            card.style.transform = 'revert-layer';
+        }
+    }
+});
+
+</script>
+</body>
+</html>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    let lastScrollTop = 0;
+
+    window.addEventListener('scroll', function () {
+        var st = window.pageYOffset || document.documentElement.scrollTop;
+        var direction = st > lastScrollTop ? 'down' : 'up';
+        lastScrollTop = st <= 0 ? 0 : st;
+
+        var card2 = document.querySelector('#card2');
+        var card3 = document.querySelector('#card3');
+        var card4 = document.querySelector('#card4');
+
+        applyTransform(card2, -85, 125, 90, 0.7, direction);
+        applyTransform(card3, -5, 125, 90, 0.7, direction);
+        applyTransform(card4, 76, 125, 90, 0.7, direction);
+    });
+
+    function applyTransform(card, translateX, translateY, rotate, scale, direction) {
+        var rect = card.getBoundingClientRect();
+        var isInViewport = rect.top <= window.innerHeight && rect.bottom >= 0;
+
+        if (isInViewport && direction === 'down') {
+            card.style.transform = `translateX(${translateX}%) translateY(${translateY}%) rotate(${rotate}deg) scale(${scale})`;
+        } else {
+            card.style.transform = 'none';
+        }
+    }
+});
+
+</script>

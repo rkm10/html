@@ -1,0 +1,178 @@
+<style>
+    /* .circle-bg {
+      background: linear-gradient(90deg, rgba(37, 72, 107, 0.15) 0%, rgba(37, 72, 107, 0.15) 100%);
+      border-radius: 50%;
+      width: 80% !important;
+      height: 70vh;
+      top: 50px;
+      backdrop-filter: blur(10px);
+    } */
+
+    .circle-bg {
+        position: relative;
+        width: 80% !important;
+        height: 500px;
+        /* top: 50px; */
+    }
+
+    .circle-bg::before {
+        content: "";
+        position: absolute;
+        /* top: 0;
+      left: 0; */
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: linear-gradient(90deg, rgba(37, 72, 107, 0.15) 0%, rgba(37, 72, 107, 0.15) 100%);
+        filter: blur(6px);
+        z-index: -1;
+    }
+
+
+    .uploadcloud {
+        width: 50%;
+        position: absolute;
+        top: 150px;
+        left: -9%;
+        animation: zoomInOut 4s infinite;
+    }
+
+    .downloadcloud {
+        width: 50%;
+        position: relative;
+        top: 55px;
+        left: 59%;
+        animation: zoomInOut 4s infinite;
+    }
+
+    .macbook {
+        position: absolute;
+        width: 70%;
+        top: 43px;
+        left: 0px;
+        transform-origin: left;
+        transform: rotate(5deg);
+        animation: zoomRotate 4s infinite;
+    }
+
+    @keyframes zoomInOut {
+
+        0%,
+        100% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.2);
+        }
+    }
+
+    @keyframes zoomRotate {
+
+        0%,
+        100% {
+            transform: scale(1.4) rotate(5deg);
+        }
+
+        50% {
+            transform: scale(1.6) rotate(-5deg);
+        }
+    }
+    @media screen and (min-width: 1240px){
+        .circle-bg {
+            height: 550px !important;
+            top: 0px;
+            width: 100% !important;
+        }
+    }
+
+
+    @media screen and (min-width: 1101px) and (max-width: 1240px) {
+        .circle-bg {
+            height: 400px !important;
+            top: 0px;
+        }
+    }
+    @media screen and (min-width: 1000px) and (max-width: 1100px) {
+        .circle-bg {
+            height: 388px !important;
+            top: 0px;
+        }
+    }
+    @media screen and (min-width: 768px) and (max-width: 999px) {
+        .circle-bg {
+            width: 500px !important;
+            top: 0px;
+        }
+    }
+
+    @media screen and (min-width:630px) and (max-width: 767px) {
+        .circle-bg {
+            top: 0px;
+            margin-bottom: 48px;
+            height: 500px;
+        }
+    }
+    @media screen and (min-width:539px) and (max-width: 630px) {
+        .circle-bg {
+            top: 0px;
+            margin-bottom: 48px;
+            height: 400px;
+        }
+    }
+    
+    @media screen and (min-width:426px) and (max-width: 538px) {
+        .circle-bg {
+            top: 0px;
+            margin-bottom: 48px;
+            height: 350px;
+        }
+    }
+
+    @media screen and (min-width: 375px) and (max-width: 425px) {
+        .circle-bg {
+            width: 70% !important;
+            height: 260px;
+            margin-bottom: 48px;
+            top: 0px;
+        }
+
+        .uploadcloud {
+            top: 108px;
+        }
+    }
+
+    @media screen and (min-width: 300px) and (max-width: 374px) {
+        .circle-bg {
+            width: 90% !important;
+            height: 235px;
+            margin-bottom: 44px;
+            top: 10px;
+        }
+
+        .uploadcloud {
+            top: 100px;
+        }
+    }
+    @media screen and (max-width: 299px) {
+        .circle-bg {
+            width: 100% !important;
+            height: 220px;
+            margin-bottom: 44px;
+            top: 10px;
+        }
+
+        .uploadcloud {
+            top: 100px;
+        }
+    }
+</style>
+
+<body>
+    <div class="circle-bg">
+        <img src="http://hestiarealty.in/aierp/wp-content/uploads/2024/04/upload-to-cloud.png" class="uploadcloud">
+        <img src="http://hestiarealty.in/aierp/wp-content/uploads/2024/04/download-from-cloud.png"
+            class="downloadcloud">
+        <img src="http://hestiarealty.in/aierp/wp-content/uploads/2024/04/MacBook-Pro.png" class="macbook">
+    </div>
+</body>
