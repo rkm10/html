@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management System - Comprehensive Documentation</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: #2c3e50;
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            border-bottom: 2px solid #eaecef;
+            padding-bottom: 0.3em;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 1px solid #eaecef;
+            padding-bottom: 0.3em;
+        }
+
+        h3 {
+            font-size: 1.5em;
+        }
+
+        h4 {
+            font-size: 1.25em;
+        }
+
+        ul,
+        ol {
+            padding-left: 2em;
+        }
+
+        code {
+            background-color: #f6f8fa;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 85%;
+        }
+
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            padding: 16px;
+            overflow: auto;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1em 0;
+        }
+
+        th,
+        td {
+            border: 1px solid #dfe2e5;
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f6f8fa;
+        }
+
+        .notification-box {
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            margin: 20px 0;
+            padding: 0;
+        }
+
+        .notification-header {
+            background-color: #f6f8fa;
+            padding: 10px 15px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .notification-item {
+            padding: 10px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+
+        .notification-meta {
+            font-size: 0.85em;
+            color: #6c757d;
+            margin-top: 3px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+        }
+
+        .badge-success {
+            background-color: #e3fcef;
+            color: #0d6832;
+        }
+
+        .badge-primary {
+            background-color: #e1f5fe;
+            color: #0277bd;
+        }
+
+        .badge-warning {
+            background-color: #fff8e1;
+            color: #ff8f00;
+        }
+
+        .highlight {
+            background-color: #fffbdd;
+            padding: 16px;
+            border-left: 4px solid #ffd33d;
+            margin: 1em 0;
+        }
+
+        .technology-comparison {
+            display: flex;
+            margin: 20px 0;
+            gap: 20px;
+        }
+
+        .tech-column {
+            flex: 1;
+            border: 1px solid #dfe2e5;
+            border-radius: 6px;
+            padding: 15px;
+        }
+
+        .tech-header {
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #dfe2e5;
+        }
+
+        .pros-cons h5 {
+            margin: 10px 0 5px 0;
+        }
+
+        .section-intro {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        .milestone-box {
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-bottom: 30px;
+        }
+
+        .feature-description {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Project Management System – Comprehensive Documentation</h1>
+
+    <div class="section-intro">
+        <p>This document provides an in-depth overview of our role-based project and task management system, detailing
+            the architectural decisions, implementation timeline, and feature specifications. The system has been
+            designed with team collaboration at its core, ensuring appropriate access controls while facilitating
+            seamless project management workflows.</p>
+    </div>
+
+    <h2>Project Architecture & Technology Stack</h2>
+    <p>The Project Management System employs a modern, scalable architecture with a clear separation between frontend
+        and backend components. This separation allows for independent development, testing, and deployment of system
+        components while maintaining a cohesive application.</p>
+
+    <h3>Backend Implementation</h3>
+    <p>The backend is built on the <strong>Frappe Framework</strong>, which provides a robust foundation for rapid
+        application development. Frappe offers several advantages for our project:</p>
+    <ul>
+        <li><strong>Python-based development:</strong> Leverages Python's readability and extensive libraries for
+            business logic implementation</li>
+        <li><strong>MariaDB integration:</strong> Provides reliable, ACID-compliant data storage with excellent
+            performance characteristics for our transaction-heavy application</li>
+        <li><strong>Built-in DocType system:</strong> Allows for rapid modeling of business entities with automatic UI
+            generation for admin interfaces</li>
+        <li><strong>Permission system:</strong> Offers a granular, role-based access control framework that aligns
+            perfectly with our requirements</li>
+        <li><strong>Hooks and events:</strong> Enables extension of core functionality through custom event handlers and
+            middleware</li>
+    </ul>
+
+    <h3>Frontend Implementation</h3>
+    <p>The frontend utilizes <strong>React with Tailwind CSS</strong>, creating a responsive, interactive user interface
+        that communicates with the backend via RESTful APIs. This combination offers significant advantages:</p>
+
+    <div class="technology-comparison">
+        <div class="tech-column">
+            <div class="tech-header">React (Current Implementation)</div>
+            <p>React was selected as our primary frontend library for its component-based architecture and robust
+                ecosystem. Our implementation leverages:</p>
+            <ul>
+                <li><strong>Component reusability:</strong> Building blocks like task cards, project headers, and
+                    notification components are reused throughout the application</li>
+                <li><strong>React Router:</strong> Provides client-side routing with history management and deep linking
+                    capabilities</li>
+                <li><strong>State management:</strong> Using React Context API and hooks for global state maintenance
+                </li>
+                <li><strong>Tailwind CSS:</strong> Utility-first CSS framework enabling rapid UI development with
+                    consistent styling</li>
+            </ul>
+            <div class="pros-cons">
+                <h5>Advantages of React</h5>
+                <ul>
+                    <li>Greater flexibility in architecture decisions</li>
+                    <li>Smaller bundle size for simpler applications</li>
+                    <li>More granular control over rendering and optimization</li>
+                    <li>Easier integration with existing systems</li>
+                    <li>Broader developer availability in the current market</li>
+                </ul>
+            </div>
+        </div>
+        <div class="tech-column">
+            <div class="tech-header">Next.js (Considered Alternative)</div>
+            <p>While we ultimately chose vanilla React, Next.js was a strong contender during our technology selection
+                process. Next.js would offer these potential benefits:</p>
+            <ul>
+                <li><strong>Server-side rendering:</strong> Improved initial load performance and SEO capabilities</li>
+                <li><strong>File-based routing:</strong> Simplified navigation structure based on file system</li>
+                <li><strong>API routes:</strong> Built-in API endpoint creation within the same codebase</li>
+                <li><strong>Built-in optimizations:</strong> Automatic code splitting, image optimization, and
+                    performance enhancements</li>
+            </ul>
+            <div class="pros-cons">
+                <h5>Why Next.js Was Not Selected</h5>
+                <ul>
+                    <li>Our application does not require SEO optimization (internal tool)</li>
+                    <li>Potential deployment complexity with our existing infrastructure</li>
+                    <li>The team had more extensive experience with React</li>
+                    <li>Frappe already handles backend API concerns effectively</li>
+                    <li>Additional abstraction layer was unnecessary for our requirements</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <h1>JavaScript vs TypeScript: Technical Evaluation for Project Management System</h1>
+
+    <div class="section-intro">
+        <p>This document evaluates JavaScript and TypeScript as potential frontend development languages for our Project
+            Management System. The choice between these technologies has significant implications for development
+            efficiency, code quality, and long-term maintainability.</p>
+    </div>
+
+    <h2>Technology Comparison</h2>
+    <p>Both JavaScript and TypeScript are viable options for building our frontend application, each with distinct
+        advantages and trade-offs:</p>
+
+    <div class="technology-comparison">
+        <div class="tech-column">
+            <div class="tech-header"><span class="badge badge-js">JS</span>JavaScript</div>
+            <p>JavaScript is the native language of web browsers, offering simplicity and flexibility for rapid
+                development:</p>
+            <ul>
+                <li><strong>No compilation step required</strong> - Direct execution in browser environments</li>
+                <li><strong>Lower initial development overhead</strong> - No type definitions to maintain</li>
+                <li><strong>Universal ecosystem compatibility</strong> - Works with all libraries without adapters</li>
+                <li><strong>Flexible typing system</strong> - Dynamic types can be advantageous for rapid prototyping
+                </li>
+            </ul>
+            <div class="pros-cons">
+                <h5>Advantages</h5>
+                <ul>
+                    <li>Faster initial setup and development velocity</li>
+                    <li>No build step required for simple applications</li>
+                    <li>Easier onboarding for developers with frontend experience</li>
+                    <li>Full compatibility with all JavaScript libraries without additional typings</li>
+                    <li>More flexible approach to object structures and prototype manipulation</li>
+                </ul>
+                <h5>Disadvantages</h5>
+                <ul>
+                    <li>Type errors only discovered at runtime</li>
+                    <li>Refactoring is more risky and time-consuming</li>
+                    <li>IDE support is more limited for code navigation and autocompletion</li>
+                    <li>Less self-documenting code requires more explicit documentation</li>
+                    <li>Challenging to maintain in larger codebases with multiple developers</li>
+                </ul>
+            </div>
+            <div class="code-example">
+                <h5>JavaScript Example: Project Component</h5>
+                <pre>
+function ProjectCard({ project, onStatusChange }) {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+  
+  const handleStatusChange = (newStatus) => {
+    // No type checking for newStatus
+    onStatusChange(project.id, newStatus);
+  };
+
+  return (
+    &lt;div className="project-card"&gt;
+      &lt;h3&gt;{project.name}&lt;/h3&gt;
+      &lt;div&gt;Status: {project.status}&lt;/div&gt;
+      &lt;button onClick={() => setIsExpanded(!isExpanded)}&gt;
+        {isExpanded ? 'Show Less' : 'Show More'}
+      &lt;/button&gt;
+      {isExpanded && (
+        &lt;div className="project-details"&gt;
+          &lt;p&gt;Owner: {project.owner}&lt;/p&gt;
+          &lt;p&gt;Deadline: {project.deadline}&lt;/p&gt;
+          &lt;button onClick={() => handleStatusChange('completed')}&gt;
+            Mark Complete
+          &lt;/button&gt;
+        &lt;/div&gt;
+      )}
+    &lt;/div&gt;
+  );
+}</pre>
+            </div>
+        </div>
+        <div class="tech-column">
+            <div class="tech-header"><span class="badge badge-ts">TS</span>TypeScript</div>
+            <p>TypeScript extends JavaScript with static typing, providing enhanced tooling and code quality guarantees:
+            </p>
+            <ul>
+                <li><strong>Static type checking</strong> - Catches type errors during development</li>
+                <li><strong>Enhanced IDE support</strong> - Better code completion, navigation, and refactoring</li>
+                <li><strong>Self-documenting code</strong> - Types serve as living documentation</li>
+                <li><strong>Advanced language features</strong> - Interfaces, generics, enums, and more</li>
+            </ul>
+            <div class="pros-cons">
+                <h5>Advantages</h5>
+                <ul>
+                    <li>Early error detection during development instead of runtime</li>
+                    <li>Superior refactoring support with automated code updating</li>
+                    <li>Enhanced IDE features including intelligent autocompletion</li>
+                    <li>Better code documentation through explicit type definitions</li>
+                    <li>Enforces more consistent coding patterns across development team</li>
+                </ul>
+                <h5>Disadvantages</h5>
+                <ul>
+                    <li>Requires compilation step in development workflow</li>
+                    <li>Higher learning curve for developers new to typed languages</li>
+                    <li>Additional effort needed for type definitions and maintenance</li>
+                    <li>External libraries may need separate type definition files</li>
+                    <li>Some dynamic JavaScript patterns are harder to implement</li>
+                </ul>
+            </div>
+            <div class="code-example">
+                <h5>TypeScript Example: Project Component</h5>
+                <pre>
+interface Project {
+  id: string;
+  name: string;
+  status: 'pending' | 'active' | 'completed' | 'archived';
+  owner: string;
+  deadline: string;
+  completionPercentage: number;
+}
+
+type StatusChangeHandler = (projectId: string, newStatus: Project['status']) => void;
+
+interface ProjectCardProps {
+  project: Project;
+  onStatusChange: StatusChangeHandler;
+}
+
+function ProjectCard({ project, onStatusChange }: ProjectCardProps) {
+  const [isExpanded, setIsExpanded] = React.useState&lt;boolean&gt;(false);
+  
+  const handleStatusChange = (newStatus: Project['status']) => {
+    onStatusChange(project.id, newStatus);
+  };
+
+  return (
+    &lt;div className="project-card"&gt;
+      &lt;h3&gt;{project.name}&lt;/h3&gt;
+      &lt;div&gt;Status: {project.status}&lt;/div&gt;
+      &lt;button onClick={() => setIsExpanded(!isExpanded)}&gt;
+        {isExpanded ? 'Show Less' : 'Show More'}
+      &lt;/button&gt;
+      {isExpanded && (
+        &lt;div className="project-details"&gt;
+          &lt;p&gt;Owner: {project.owner}&lt;/p&gt;
+          &lt;p&gt;Deadline: {project.deadline}&lt;/p&gt;
+          &lt;button onClick={() => handleStatusChange('completed')}&gt;
+            Mark Complete
+          &lt;/button&gt;
+        &lt;/div&gt;
+      )}
+    &lt;/div&gt;
+  );
+}</pre>
+            </div>
+        </div>
+    </div>
+
+    <h2>Evaluation Criteria for Project Management System</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Criteria</th>
+                <th>JavaScript</th>
+                <th>TypeScript</th>
+                <th>Importance</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Development Speed (Initial)</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>⭐⭐⭐</td>
+                <td>Medium</td>
+            </tr>
+            <tr>
+                <td>Development Speed (Long-term)</td>
+                <td>⭐⭐</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>High</td>
+            </tr>
+            <tr>
+                <td>Code Quality & Reliability</td>
+                <td>⭐⭐</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>Critical</td>
+            </tr>
+            <tr>
+                <td>Refactoring Support</td>
+                <td>⭐⭐</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>High</td>
+            </tr>
+            <tr>
+                <td>Team Scalability</td>
+                <td>⭐⭐</td>
+                <td>⭐⭐⭐⭐</td>
+                <td>High</td>
+            </tr>
+            <tr>
+                <td>Ecosystem Integration</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>⭐⭐⭐⭐</td>
+                <td>Medium</td>
+            </tr>
+            <tr>
+                <td>Learning Curve</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>⭐⭐⭐</td>
+                <td>Low</td>
+            </tr>
+            <tr>
+                <td>Project Complexity Support</td>
+                <td>⭐⭐</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>Critical</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Use Case Analysis for Project Management System</h2>
+    <p>Our project management application has specific characteristics that influence the language choice:</p>
+    <ul>
+        <li><strong>Complex Data Models:</strong> Project, Task, and User entities have many relationships and
+            properties that benefit from strict typing</li>
+        <li><strong>Team Development:</strong> Multiple developers will work concurrently on the codebase</li>
+        <li><strong>Long-term Maintenance:</strong> The application is expected to evolve over years with changing
+            requirements</li>
+        <li><strong>Critical Business Operations:</strong> Errors in task assignments or project tracking could have
+            significant business impact</li>
+        <li><strong>Rich UI Components:</strong> Complex interactive elements like Gantt charts, kanban boards, and
+            dashboards</li>
+    </ul>
+
+    <h2>Real-world Implementation Considerations</h2>
+    <h3>TypeScript Advantages for Project Management System</h3>
+    <ul>
+        <li><strong>API Contract Enforcement:</strong> TypeScript ensures that frontend components correctly consume
+            backend API responses, reducing integration errors</li>
+        <li><strong>Refactoring Safety:</strong> When changing core entity models (like Task structure), TypeScript
+            immediately identifies all affected components</li>
+        <li><strong>Complex State Management:</strong> Type definitions for Redux/Context state trees provide clarity on
+            available data throughout component hierarchy</li>
+        <li><strong>Form Validation:</strong> Type definitions can align with validation schemas for consistent data
+            handling</li>
+        <li><strong>Developer Onboarding:</strong> New team members can understand component interfaces faster through
+            type definitions</li>
+    </ul>
+
+    <h3>JavaScript Advantages for Project Management System</h3>
+    <ul>
+        <li><strong>Rapid Prototyping:</strong> Quickly implement new features without defining comprehensive type
+            structures</li>
+        <li><strong>Runtime Flexibility:</strong> Handle dynamically structured data from legacy systems without complex
+            type definitions</li>
+        <li><strong>Simpler Build Process:</strong> Eliminate TypeScript compilation step for faster development
+            iterations</li>
+        <li><strong>Easier Third-party Integration:</strong> Use any JavaScript library without needing corresponding
+            TypeScript definitions</li>
+    </ul>
+
+    <div class="recommendation">
+        <h3>Recommendation for Project Management System</h3>
+        <p><strong>TypeScript is the recommended choice</strong> for our Project Management System development for the
+            following reasons:</p>
+        <ul>
+            <li>The complex data model with many entity relationships benefits significantly from static typing</li>
+            <li>The project's long-term maintenance requirements favor TypeScript's refactoring safety</li>
+            <li>Team collaboration is enhanced through self-documenting interfaces and improved IDE support</li>
+            <li>The mission-critical nature of project tracking demands the higher reliability that TypeScript provides
+            </li>
+            <li>The initial productivity cost of TypeScript is quickly recovered through reduced debugging time and
+                fewer runtime errors</li>
+        </ul>
+        <p>While TypeScript does require additional setup and learning time, these investments are justified by the
+            substantial improvements in code quality, maintainability, and development efficiency over the project
+            lifecycle.</p>
+    </div>
+
+    <h3>Implementation Strategy</h3>
+    <p>For optimal results with TypeScript in our Project Management System:</p>
+    <ol>
+        <li>Define core entity interfaces (Project, Task, User, etc.) in shared type definition files</li>
+        <li>Use strict TypeScript configuration to maximize type safety benefits</li>
+        <li>Implement robust CI/CD pipeline that includes TypeScript compilation checks</li>
+        <li>Create type definition files for any untyped third-party libraries used in the project</li>
+        <li>Conduct brief TypeScript training sessions for team members unfamiliar with static typing</li>
+    </ol>
+
+    <h3>Architecture Overview</h3>
+    <p>The system follows a RESTful architecture pattern, with clear separation between frontend and backend:</p>
+    <ul>
+        <li><strong>Data Layer:</strong> MariaDB database managed through Frappe's ORM system with optimized queries for
+            performance</li>
+        <li><strong>API Layer:</strong> RESTful endpoints with JSON payloads, JWT authentication, and role-based
+            authorization checks</li>
+        <li><strong>Frontend Layer:</strong> React components organized by feature domains with shared UI components
+            library</li>
+        <li><strong>State Management:</strong> Combination of local component state, React Context API for global state,
+            and server state caching</li>
+    </ul>
+    <p>This architecture provides several benefits including scalability, maintainability, and the ability to
+        potentially replace either frontend or backend independently as technology evolves.</p>
+
+    <h2>Detailed Development Timeline & Milestone Achievements</h2>
+    <p>The project was executed across 8 weeks, following an iterative development approach with clearly defined
+        milestones. Each milestone built upon previous work, gradually expanding system functionality while maintaining
+        core quality standards.</p>
+
+    <div class="milestone-box">
+        <h3>Milestone 1: Backend Foundation (Week 1)</h3>
+        <p>The initial phase established the core data model and backend infrastructure necessary for subsequent
+            development. This critical foundation included:</p>
+        <ul>
+            <li><strong>Frappe Framework Configuration:</strong> Setting up the development environment, database
+                connections, and initial project structure according to Frappe best practices</li>
+            <li><strong>Core DocType Definition:</strong> Creating the fundamental data models including:
+                <ul>
+                    <li><code>Project</code>: The top-level container for all project-related activities with metadata
+                        about project scope, timeline, and ownership</li>
+                    <li><code>Task</code>: Individual work items with assignees, status tracking, and hierarchical
+                        relationships</li>
+                    <li><code>Sprint</code>: Time-boxed work periods containing selected tasks for completion</li>
+                    <li><code>TimeLog</code>: Records of time spent on specific tasks by team members</li>
+                    <li><code>Team</code>: Groupings of users who collaborate on projects</li>
+                    <li><code>ProjectRole</code>: Project-specific role assignments that determine permissions</li>
+                </ul>
+            </li>
+            <li><strong>Permission Logic Implementation:</strong> Establishing the scaffolding for role-based access
+                controls using Frappe's permission system, extended with custom validators and middleware for complex
+                authorization scenarios</li>
+            <li><strong>Test Data Generation:</strong> Creating sample data records across all DocTypes to facilitate
+                development and testing, including realistic user roles, project structures, and task relationships</li>
+        </ul>
+        <p>The successful completion of this milestone provided a solid foundation for the project, with all core data
+            models properly defined and tested. The team validated the data relationships through comprehensive unit
+            tests and manual verification.</p>
+    </div>
+
+    <div class="milestone-box">
+        <h3>Milestone 2: Frontend Scaffold (Week 2)</h3>
+        <p>With the backend foundation in place, this milestone focused on establishing the frontend architecture and
+            core user experience flows:</p>
+        <ul>
+            <li><strong>React Application Structure:</strong> Setting up the React application using Create React App
+                with TypeScript for type safety and better developer experience</li>
+            <li><strong>Tailwind CSS Integration:</strong> Configuring Tailwind with custom theme extensions to match
+                company branding while maintaining the utility-first approach for rapid development</li>
+            <li><strong>Routing Implementation:</strong> Establishing the application's navigation structure using React
+                Router with:
+                <ul>
+                    <li>Protected routes requiring authentication</li>
+                    <li>Role-based route guards for admin sections</li>
+                    <li>Nested routing for project-specific views</li>
+                    <li>URL parameter handling for direct navigation to specific resources</li>
+                </ul>
+            </li>
+            <li><strong>Authentication Flow:</strong> Implementing the complete user authentication experience
+                including:
+                <ul>
+                    <li>Login form with validation and error handling</li>
+                    <li>JWT token storage and refresh mechanisms</li>
+                    <li>Session timeout handling and secure logout</li>
+                    <li>Integration with Frappe's authentication backend</li>
+                </ul>
+            </li>
+            <li><strong>Application Shell:</strong> Developing the main layout components including responsive sidebar
+                navigation, header with user information, and global notification area</li>
+        </ul>
+        <p>By the end of this milestone, developers could navigate through a fully functional application shell with
+            working authentication and protected routes. This provided the framework for feature-specific components to
+            be added in subsequent milestones.</p>
+    </div>
+
+    <div class="milestone-box">
+        <h3>Milestone 3: Project & Task Management (Weeks 3–4)</h3>
+        <p>This extended milestone delivered the core business functionality of the application, focusing on the
+            fundamental project and task management features:</p>
+        <ul>
+            <li><strong>Project Management:</strong> Development of comprehensive project features including:
+                <ul>
+                    <li>Project dashboard with summary metrics and activity feeds</li>
+                    <li>Project creation wizard with multi-step form and validation</li>
+                    <li>Project listing with filtering, sorting, and search capabilities</li>
+                    <li>Project details view with tabs for tasks, team members, and settings</li>
+                </ul>
+            </li>
+            <li><strong>Task Management:</strong> Implementation of the complete task lifecycle:
+                <ul>
+                    <li>Task board with customizable columns for different workflow states</li>
+                    <li>Task creation modal with rich text description editor</li>
+                    <li>Task detail view with comments, activity history, and related tasks</li>
+                    <li>Status transition controls with optional comments and notifications</li>
+                    <li>Drag-and-drop task prioritization within status columns</li>
+                </ul>
+            </li>
+            <li><strong>Team Assignment:</strong> Development of team management interfaces:
+                <ul>
+                    <li>Team roster view showing all members and their roles</li>
+                    <li>User assignment interface with search and role selection</li>
+                    <li>Capacity planning view showing allocation across projects</li>
+                    <li>Team availability calendar with absence tracking</li>
+                </ul>
+            </li>
+        </ul>
+        <p>This milestone represented the largest development effort and delivered the core functionality that users
+            interact with daily. The team conducted extensive user testing during this phase to refine the interfaces
+            based on real-world usage patterns.</p>
+    </div>
+
+    <div class="milestone-box">
+        <h3>Milestone 4: Sprint & Admin Features (Weeks 5–6)</h3>
+        <p>Building on the core project and task management capabilities, this milestone added sprint planning
+            functionality and administrative controls:</p>
+        <ul>
+            <li><strong>Sprint Management:</strong> Development of agile sprint planning features:
+                <ul>
+                    <li>Sprint creation with date range selection and capacity planning</li>
+                    <li>Task assignment to sprints with backlog management</li>
+                    <li>Sprint board showing task progress within the current sprint</li>
+                    <li>Sprint burndown charts and velocity tracking</li>
+                    <li>Sprint retrospective documentation features</li>
+                </ul>
+            </li>
+            <li><strong>Administrative Dashboard:</strong> Implementation of comprehensive admin controls:
+                <ul>
+                    <li>User management interface for adding and deactivating accounts</li>
+                    <li>Role assignment matrix showing permissions across projects</li>
+                    <li>Project template creation and management for standardized setups</li>
+                    <li>System-wide settings configuration for defaults and behaviors</li>
+                    <li>Audit logs for tracking important system events and changes</li>
+                </ul>
+            </li>
+            <li><strong>Permission Management:</strong> Development of granular access control interfaces:
+                <ul>
+                    <li>Project-level permission configuration screen</li>
+                    <li>Role template creation and application to projects</li>
+                    <li>Individual permission override capabilities for exceptions</li>
+                    <li>Visual indicator system showing permission restrictions in the UI</li>
+                </ul>
+            </li>
+        </ul>
+        <p>The administrative features built during this milestone enabled system administrators to maintain the
+            application without developer intervention, significantly reducing the operational burden on the technical
+            team.</p>
+    </div>
+
+    <div class="milestone-box">
+        <h3>Milestone 5: Time Tracking (Week 7)</h3>
+        <p>This milestone focused on implementing comprehensive time tracking functionality to support project planning,
+            resource allocation, and billing:</p>
+        <ul>
+            <li><strong>Manual Time Entry:</strong> Development of time recording interfaces:
+                <ul>
+                    <li>Quick time entry form accessible from task views</li>
+                    <li>Detailed time logging with description and categorization</li>
+                    <li>Calendar-based weekly timesheet for bulk entry</li>
+                    <li>Timer function for real-time tracking of active tasks</li>
+                </ul>
+            </li>
+            <li><strong>Time Calculations:</strong> Implementation of time analytics features:
+                <ul>
+                    <li>Automatic summation of time entries per task</li>
+                    <li>Variance analysis comparing estimated vs. actual time</li>
+                    <li>User productivity reports showing time distribution</li>
+                    <li>Project burn rate calculations and forecasting</li>
+                </ul>
+            </li>
+            <li><strong>Audit & Reporting:</strong> Development of supervisory time management tools:
+                <ul>
+                    <li>Team lead approval workflow for submitted time</li>
+                    <li>Time audit reports with filtering and export capabilities</li>
+                    <li>Billable vs. non-billable time categorization</li>
+                    <li>Integration with project budget tracking</li>
+                </ul>
+            </li>
+        </ul>
+        <p>The time tracking features completed in this milestone provided valuable insights into project resource
+            utilization and enabled more accurate future project planning based on historical data.</p>
+    </div>
+
+    <div class="milestone-box">
+        <h3>Milestone 6: Polish & Finalization (Week 8)</h3>
+        <p>The final milestone focused on overall system quality improvements, performance optimization, and finalizing
+            the user experience:</p>
+        <ul>
+            <li><strong>Bug Resolution:</strong> Comprehensive testing and fixes for identified issues:
+                <ul>
+                    <li>Cross-browser compatibility testing and remediation</li>
+                    <li>Edge case handling for complex permission scenarios</li>
+                    <li>Data validation improvements for all user inputs</li>
+                    <li>Resolution of UI inconsistencies across different screen sizes</li>
+                </ul>
+            </li>
+            <li><strong>Performance Optimization:</strong> System-wide performance improvements:
+                <ul>
+                    <li>Frontend bundle optimization with code splitting</li>
+                    <li>Database query optimization for frequently accessed views</li>
+                    <li>API response caching for static or slowly-changing data</li>
+                    <li>Lazy loading of components for improved initial load time</li>
+                </ul>
+            </li>
+            <li><strong>UX Refinements:</strong> Enhancement of the overall user experience:
+                <ul>
+                    <li>Consistent application of design patterns across all screens</li>
+                    <li>Addition of helpful tooltips and contextual help</li>
+                    <li>Implementation of keyboard shortcuts for power users</li>
+                    <li>Refinement of form validation feedback</li>
+                    <li>Enhancement of interactive elements with appropriate animations</li>
+                </ul>
+            </li>
+            <li><strong>Documentation:</strong> Creation of comprehensive system documentation:
+                <ul>
+                    <li>Administrator guides for system configuration</li>
+                    <li>End-user tutorials and help resources</li>
+                    <li>API documentation for potential integrations</li>
+                    <li>Technical architecture documentation for future maintenance</li>
+                </ul>
+            </li>
+        </ul>
+        <p>The polishing phase ensured that the system not only functioned correctly but also provided a delightful and
+            intuitive user experience. The comprehensive documentation created during this phase will facilitate future
+            system maintenance and user adoption.</p>
+    </div>
+
+    <h2>Role-Based Access Control System</h2>
+    <p>Security and appropriate access control are fundamental to the project management system. The permission model
+        implements a sophisticated role-based access control system that balances security requirements with usability
+        concerns.</p>
+
+    <h3>Core Permission Philosophy</h3>
+    <p>The system follows the principle of least privilege, granting users only the permissions they need to perform
+        their job functions. Permissions are defined at both the system level (global roles) and project level
+        (project-specific roles) to enable fine-grained access control.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Role</th>
+                <th>Permissions</th>
+                <th>Detailed Explanation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Admin</strong></td>
+                <td>Global user/role management. Cannot create project content unless assigned.</td>
+                <td>System administrators have full control over user accounts, role definitions, and system
+                    configuration. However, they do not automatically have access to project content unless explicitly
+                    assigned to those projects. This separation enforces the principle that administrative access does
+                    not imply data access.</td>
+            </tr>
+            <tr>
+                <td><strong>Project Manager / TL / Manager</strong></td>
+                <td>Create projects, sprints, assign/manage tasks in their projects.</td>
+                <td>Project leadership roles have comprehensive control over their respective projects. They can create
+                    and configure projects, define sprints, assign tasks to team members, and manage all aspects of the
+                    project lifecycle. Their permissions are limited to projects they are assigned to, preventing access
+                    to unrelated projects.</td>
+            </tr>
+            <tr>
+                <td><strong>Team Member</strong></td>
+                <td>Create and update tasks only within assigned projects.</td>
+                <td>Regular team members can create and modify tasks within projects they belong to, but cannot make
+                    structural changes to the project itself or assign tasks to other team members. They can report
+                    time, update task status, and add comments. This role is designed to enable contribution while
+                    preventing unauthorized changes to project structure.</td>
+            </tr>
+            <tr>
+                <td><strong>All Users</strong></td>
+                <td>Read-only access to visible project components.</td>
+                <td>By default, all authenticated users have read-only access to projects they are members of. This
+                    ensures transparency while protecting against unauthorized modifications. The visibility of specific
+                    projects is controlled through team membership, allowing for information compartmentalization when
+                    needed.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Permission Implementation Details</h3>
+    <p>The permission system is implemented through multiple complementary mechanisms:</p>
+    <ul>
+        <li><strong>Frappe Document Permissions:</strong> Utilizing Frappe's built-in document-level permission system
+            for basic CRUD operations</li>
+        <li><strong>Custom Permission Hooks:</strong> Extending the basic permission system with custom validators that
+            check project-specific roles and relationships</li>
+        <li><strong>API Middleware:</strong> Implementing additional permission checks at the API layer to enforce
+            complex business rules that cannot be expressed through document permissions alone</li>
+        <li><strong>Frontend Access Controls:</strong> Complementing server-side security with UI-level controls that
+            hide or disable functionality based on user permissions</li>
+    </ul>
+    <p>This multi-layered approach ensures that permissions are consistently enforced throughout the application stack,
+        preventing unauthorized access through alternative paths.</p>
+
+    <h2>Enhanced Feature Set</h2>
+
+    <h3>Sub-tasks Architecture</h3>
+    <div class="feature-description">
+        <p>The task hierarchy system enables complex work breakdown structures through a parent-child relationship
+            model. This feature enhances project organization by allowing large tasks to be broken down into manageable
+            components while maintaining their relationship.</p>
+        <h4>Implementation Details:</h4>
+        <ul>
+            <li><strong>Data Model:</strong> Tasks include a <code>Parent Task</code> link field that creates a
+                self-referential relationship within the Task DocType</li>
+            <li><strong>Inheritance Rules:</strong> Sub-tasks inherit certain properties from their parent tasks
+                including project association, sprint assignment, and some metadata</li>
+            <li><strong>Aggregation Logic:</strong> Parent tasks automatically calculate progress based on the
+                completion status of their sub-tasks</li>
+            <li><strong>Visualization:</strong> The UI represents task hierarchies through indentation, expandable
+                trees, and visual indicators showing parent-child relationships</li>
+            <li><strong>Constraints:</strong> Business rules prevent circular references and maintain data integrity
+                across the task hierarchy</li>
+        </ul>
+        <p>The sub-task feature has proven particularly valuable for complex projects requiring detailed work breakdown
+            structures, enabling better task allocation and progress tracking at multiple levels of granularity.</p>
+    </div>
+
+    <h3>Notification System Architecture</h3>
+    <div class="feature-description">
+        <p>The notification system provides timely, relevant updates to users about events that require their attention
+            or awareness. This system is critical for maintaining team coordination and ensuring prompt responses to
+            changing project circumstances.</p>
+
+        <h4>Functional Design</h4>
+        <p>The notification framework is built around a central <code>NotificationLog</code> DocType that records all
+            notification events and manages their delivery to appropriate users. This architecture enables consistent
+            notification handling across multiple channels while maintaining a complete history of communications.</p>
+
+        <h4>DocType: NotificationLog - Detailed Field Specifications</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Business Logic</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>title</code></td>
+                    <td>String (100)</td>
+                    <td>Concise description of the notification event</td>
+                    <td>Automatically generated based on event type and context to ensure consistency</td>
+                </tr>
+                <tr>
+                    <td><code>message</code></td>
+                    <td>Text</td>
+                    <td>Detailed notification content with formatting support</td>
+                    <td>Can contain markdown or HTML for rich formatting, including links to relevant resources</td>
+                </tr>
+                <tr>
+                    <td><code>user</code></td>
+                    <td>Link to User</td>
+                    <td>Recipient of the notification</td>
+                    <td>Multiple notifications are created for group events, one per recipient</td>
+                </tr>
+                <tr>
+                    <td><code>type</code></td>
+                    <td>Select</td>
+                    <td>Categorization of notification (Assignment, Comment, Status Change, Mention, System)</td>
+                    <td>Determines visual styling and potential handling rules</td>
+                </tr>
+                <tr>
+                    <td><code>reference_doctype</code></td>
+                    <td>Link</td>
+                    <td>DocType of the referenced document (Project/Task/Sprint)</td>
+                    <td>Used for polymorphic relationships to various system entities</td>
+                </tr>
+                <tr>
+                    <td><code>reference_name</code></td>
+                    <td>Dynamic Link</td>
+                    <td>Specific document instance that triggered the notification</td>
+                    <td>Combined with reference_doctype to enable direct navigation to the source</td>
+                </tr>
+                <tr>
+                    <td><code>is_read</code></td>
+                    <td>Boolean</td>
+                    <td>Tracks whether user has seen the notification</td>
+                    <td>Updated when user views notification or explicitly marks as read</td>
+                </tr>
+                <tr>
+                    <td><code>sent_at</code></td>
+                    <td>Datetime</td>
+                    <td>Precise timestamp of notification creation</td>
+                    <td>Used for sorting and determining notification age</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>Notification Trigger Events</h4>
+        <p>The system monitors numerous events that can generate notifications to relevant stakeholders:</p>
+        <ul>
+            <li><strong>Task Assignment:</strong> When a user is assigned as the owner of a task, they receive an
+                immediate notification with task details and due date</li>
+            <li><strong>Status Transitions:</strong> Task status changes (particularly to "Done" or "Blocked") trigger
+                notifications to task owners, reporters, and project managers</li>
+            <li><strong>@Mentions:</strong> Users can reference colleagues in comments using @username syntax, which
+                automatically notifies the mentioned user</li>
+            <li><strong>Sprint Lifecycle Events:</strong> Sprint start, end, and planning sessions generate
+                notifications to all team members involved in the sprint</li>
+            <li><strong>Team Composition Changes:</strong> Addition or removal of team members from a project notifies
+                both the affected user and project leadership</li>
+        </ul>
+        <p>Each notification event is processed through a template engine that generates appropriate messaging based on
+            event context and user preferences.</p>
+
+        <h4>Delivery Mechanisms</h4>
+        <p>The notification system employs multiple channels to ensure timely delivery of important information:</p>
+        <ul>
+            <li><strong>Real-time In-app Notifications:</strong> Delivered via WebSocket connections using
+                <code>frappe.publish_realtime</code> for immediate display in the user interface</li>
+            <li><strong>Email Notifications:</strong> Sent through Frappe's email queue system to users who have enabled
+                email delivery, with appropriate frequency controls to prevent overwhelming users</li>
+            <li><strong>Notification Center:</strong> All notifications are accessible through a centralized
+                notification center that provides filtering, searching, and bulk management capabilities</li>
+        </ul>
+        <p>Users can configure their notification preferences at both global and project-specific levels, allowing for
+            personalization of the notification experience.</p>
+
+        <h4>User Interface Integration</h4>
+        <p>The notification system is deeply integrated into the user interface through several components:</p>
+        <div class="notification-box">
+            <div class="notification-header">
+                <span>🔔 Notifications (50)</span>
+                <span>
+                    <button>Mark all as read</button>
